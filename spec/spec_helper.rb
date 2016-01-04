@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'yarjuf'
 SimpleCov.start 'rails'
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
