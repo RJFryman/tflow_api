@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tflow/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "tflow-api"
+  spec.name          = "tflow"
   spec.version       = Tflow::VERSION
   spec.authors       = ["Robert Fryman"]
   spec.email         = ["robert.fryman@metova.com"]
 
   spec.summary       = "Ruby Api Wrapper for Tucanna Tflow-approval"
-  spec.description   = "Ruby Api Wrapper for Tucanna Tflow-approval"
+  spec.description   = spec.summary
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
