@@ -1,0 +1,10 @@
+{
+    "email": "Isaisas87@gmail.com",
+    "client_id": 100,
+    "name": "Jasmin Mraz",
+    "enabled": true,
+    "phonenumber": "(450)751-3198x00937",
+    "locale": "ru",
+    "workgroups": [{"id":1},{"id":10}],
+    "alertTypes": ["comment.create","job.create"]
+}

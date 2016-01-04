@@ -1,0 +1,36 @@
+{
+	"id": 1,
+	"name": "Name for very first order",
+	"description": "Description for the order",
+	"ship_date": "2016-01-01T00:00:00+0100",
+	"kfpx": "Passthrough",
+	"assignments": {
+		"upload_revision": [{
+			"user_id": 100
+		}],
+		"approve_jobs": [{
+			"user_id": 100
+		}, {
+			"user_id": 101
+		}],
+		"release_jobs": [{
+			"user_id": 210
+		}, {
+			"user_id": 100
+		}],
+		"upload_proofs": [{
+			"user_id": 132
+		}]
+	},
+	"tflows": [{
+		"id": "808:1"
+	}],
+	"props": {
+		"print_width": "47.56",
+		"print_height": "50.24",
+		"min_ppi": "330",
+		"product_types": null,
+		"rep_name": null,
+		"pm_name": null
+	}
+}

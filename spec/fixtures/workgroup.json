@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "name": "Instance Company Managers",
+    "description": "This workgroup has all possible rights in the system",
+    "owning_client_id": 1
+}

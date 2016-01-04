@@ -1,0 +1,22 @@
+[
+    {
+        "id": 100,
+        "email": "nobody@nowhere.net",
+        "client_id": 1,
+        "name": "Nobody Nowhere",
+        "email_frequency": "realtime",
+        "enabled": true,
+        "phonenumber": null,
+        "locale": "en"
+    },
+    {
+        "id": 102,
+        "email": "Isaias87@gmail.com",
+        "client_id": 100,
+        "name": "Jasmin Mraz",
+        "email_frequency": "realtime",
+        "enabled": true,
+        "phonenumber": "(450)751-3198x00937",
+        "locale": "ru"
+    }
+]
