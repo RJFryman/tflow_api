@@ -1,0 +1,27 @@
+rspec:
+  image: docker.metova.com:5000/metova/rspec-jenkins
+  links:
+    - postgres
+  environment:
+    AVOCADO: 1
+    SPEC_OPTS: "-f progress -f JUnit -o reports/results.xml"
+    ELASTICSEARCH_URL: elasticsearch
+    RAILS_ENV: test
+    DB_NAME: rails-development-db
+    DB_MASTER_HOST: postgres
+    DB_HOST: postgres
+    DB_USERNAME: apps
+    DB_PASSWORD: metova123
+  command: bash -lc 'cd /workspace && (rbenv install $$(cat .ruby-version) || rbenv version) && gem install bundler && rbenv rehash && bundle install && xvfb-run -a bundle exec rspec'
+
+  volumes:
+    - ./:/workspace
+    - ~/.ssh:/root/.ssh
+  volumes_from:
+    - rbenv
+
+postgres:
+  image: postgres
+  environment:
+    - POSTGRES_USER=apps
+    - POSTGRES_PASSWORD=metova123
