@@ -1,4 +1,3 @@
-require 'pry-byebug'
 module Tflow
   class ApiClient
     module Authentication
