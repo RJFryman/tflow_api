@@ -19,7 +19,7 @@ module Tflow
       @client ||= Faraday.new(:url => url) do |http|
         http.request :url_encoded
         http.adapter :net_http
-        http.response :json       
+        http.response :json, :content_type => /\bjson$/
       end
     end
 
