@@ -24,6 +24,13 @@ module Tflow
         @token = "#{conn.body["token_type"]} #{conn.body["access_token"]}"
       end
 
+      def version
+        conn = @client.get do |req|
+          req.url '/api/version'
+        end
+        conn.body
+      end
+
     end
   end
 end

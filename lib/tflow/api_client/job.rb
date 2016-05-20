@@ -81,10 +81,11 @@ module Tflow
       # Returns:
       # Array of Tflow objects
 
-      def list_jobs()
+      def list_jobs(json_payload={})
         conn = @client.get do |req|
-          req.url '/api/v1/job/list'
+          req.url '/api/v1/job/list?'
           req.headers["Authorization"] = @token
+          req.params = json_payload
         end
         conn.body
       end

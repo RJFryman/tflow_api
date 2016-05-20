@@ -34,10 +34,11 @@ module Tflow
       # Returns:
       # Array of Workgroup objects
 
-      def list_workgroups
+      def list_workgroups(json_payload={})
         conn = @client.get do |req|
-          req.url '/api/v1/workgroup/list'
+          req.url '/api/v1/workgroup/list?'
           req.headers["Authorization"] = @token
+          req.params = json_payload
         end
         conn.body
       end

@@ -56,11 +56,11 @@ module Tflow
       # Returns:
       # Array of Client objects
 
-      def list_clients(name=nil)
+      def list_clients(json_payload={})
         conn = @client.get do |req|
-          req.url '/api/v1/client/list'
+          req.url "/api/v1/client/list?"
           req.headers["Authorization"] = @token
-          req.body = { "name": name}
+          req.params = json_payload
         end
         conn.body
       end
