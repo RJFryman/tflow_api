@@ -1,0 +1,48 @@
+{
+    "allowedTflows": [
+        {
+            "id": "909:1",
+            "tflow_id": "909",
+            "tflow_name": "TURBINE_909",
+            "queue_id": "1",
+            "queue_name": "Full Color"
+        }
+    ],
+    "allowedVisibleToInstanceUsers": [
+        {
+            "user_id": 115,
+            "user_name": "Jaeden Waelchi",
+            "user_email": "brakus.kory@yahoo.com",
+            "client_id": 1,
+            "client_name": "Tucanna"
+        },
+        {
+            "user_id": 106,
+            "user_name": "Lavonne Pouros",
+            "user_email": "eichmann.adriana@yahoo.com",
+            "client_id": 1,
+            "client_name": "Tucanna"
+        }
+    ],
+    "allowedVisibleToNonInstanceUsers": [
+        {
+            "user_id": 101,
+            "user_name": "Kari Blick",
+            "user_email": "gideon52@yahoo.com",
+            "client_id": 101,
+            "client_name": "Beatty and Sons"
+        },
+        {
+            "user_id": 112,
+            "user_name": "Lucile Torphy",
+            "user_email": "melisa.feil@okuneva.org",
+            "client_id": 100,
+            "client_name": "Anonymous Uploading"
+        }
+    ],
+    "defaults": {
+        "tflows": ["909:1"],
+        "visible_to_instance_user_ids": [ 115 ],
+        "visible_to_non_instance_user_ids": [ 101 ]
+    }
+}

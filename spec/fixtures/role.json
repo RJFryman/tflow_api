@@ -1,0 +1,6 @@
+{
+   "id": 100,
+   "name": "Production Manager",
+   "description": "This role is for production managers",
+   "owning_client_id": 101
+}

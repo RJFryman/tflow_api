@@ -3,7 +3,7 @@ module Tflow
     module User
       # http://demo.tucannatflow.com/apidoc/#api-User
 
-      ### POST /api/v1/user/create
+      ### POST /api/v2/user/create
 
       # Requires:
       # -- Header --
@@ -25,14 +25,14 @@ module Tflow
 
       def create_user(json_payload)
         conn = @client.post do |req|
-          req.url '/api/v1/user/create'
+          req.url '/api/v2/user/create'
           req.headers["Authorization"] = @token
           req.body = json_payload
         end
         conn.body
       end
 
-      ### GET /api/v1/user/:id
+      ### GET /api/v2/user/:id
 
       # Requires:
       # -- Header --
@@ -50,13 +50,13 @@ module Tflow
 
       def get_user(id)
         conn = @client.get do |req|
-          req.url "/api/v1/user/#{id}"
+          req.url "/api/v2/user/#{id}"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/user/list
+      ### GET /api/v2/user/list
 
       # Requires:
       # -- Header --
@@ -69,9 +69,18 @@ module Tflow
 
       def list_users(json_payload={})
         conn = @client.get do |req|
-          req.url '/api/v1/user/list?'
+          req.url '/api/v2/user/list?'
           req.headers["Authorization"] = @token
           req.params = json_payload
+        end
+        conn.body
+      end
+
+      def update_user(id, json_payload)
+        conn = @client.post do |req|
+          req.url "/api/v2/user/#{id}"
+          req.headers["Authorization"] = @token
+          req.body = json_payload
         end
         conn.body
       end

@@ -3,7 +3,15 @@ module Tflow
     module Job
       # http://demo.tucannatflow.com/apidoc/#api-Job
 
-      ### POST /api/v1/job/create
+      def clear_rush_request_job(id)
+        conn = @client.post do |req|
+          req.url "/api/v2/job/#{id}/rush/clear"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      ### POST /api/v2/job/create
 
       # Requires:
       # -- Header --
@@ -26,14 +34,22 @@ module Tflow
 
       def create_job(json_payload)
         conn = @client.post do |req|
-          req.url '/api/v1/job/create'
+          req.url '/api/v2/job/create'
           req.headers["Authorization"] = @token
           req.body = json_payload
         end
         conn.body
       end
 
-      ### POST /api/v1/job/:id/executeTransition
+      def delete_job(id)
+        conn = @client.delete do |req|
+          req.url "/api/v2/job/#{id}"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      ### POST /api/v2/job/:id/executeTransition
       # Requires:
       # -- Header --
       # access_token:  String
@@ -43,14 +59,14 @@ module Tflow
 
       def executeTransition(id, transition_name)
         conn = @client.post do |req|
-          req.url "/api/v1/job/#{id}/executeTransition"
+          req.url "/api/v2/job/#{id}/executeTransition"
           req.headers["Authorization"] = @token
           req.body = { "transition_name": transition_name}
         end
         conn.body
       end
 
-      ### GET /api/v1/job/:id
+      ### GET /api/v2/job/:id
 
       # Requires:
       # -- Header --
@@ -63,13 +79,13 @@ module Tflow
 
       def get_job(id)
         conn = @client.get do |req|
-          req.url "/api/v1/job/#{id}"
+          req.url "/api/v2/job/#{id}"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/job/list
+      ### GET /api/v2/job/list
 
       # Requires:
       # -- Header --
@@ -83,14 +99,14 @@ module Tflow
 
       def list_jobs(json_payload={})
         conn = @client.get do |req|
-          req.url '/api/v1/job/list?'
+          req.url '/api/v2/job/list?'
           req.headers["Authorization"] = @token
           req.params = json_payload
         end
         conn.body
       end
 
-      ### GET /api/v1/job/:id/allowedTransitions
+      ### GET /api/v2/job/:id/allowedTransitions
 
       # Requires:
       # -- Header --
@@ -103,13 +119,13 @@ module Tflow
 
       def list_job_transitions(id)
         conn = @client.get do |req|
-          req.url "/api/v1/job/#{id}/allowedTransitions"
+          req.url "/api/v2/job/#{id}/allowedTransitions"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/job/:id/revisions
+      ### GET /api/v2/job/:id/revisions
 
       # Requires:
       # -- Header --
@@ -122,8 +138,41 @@ module Tflow
 
       def list_job_revisions(id)
         conn = @client.get do |req|
-          req.url "/api/v1/job/#{id}/revisions"
+          req.url "/api/v2/job/#{id}/revisions"
           req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      def re_preflight(id)
+        conn = @client.post do |req|
+          req.url "/api/v2/job/#{id}/repreflight"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      def set_rush_job(id)
+        conn = @client.post do |req|
+          req.url "/api/v2/job/#{id}/rush/request"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      def undo_rush_request(id)
+        conn = @client.post do |req|
+          req.url "/api/v2/job/#{id}/rush/undoRequest"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      def update_job(id, json_payload)
+        conn = @client.post do |req|
+          req.url "/api/v2/job/#{id}/update"
+          req.headers["Authorization"] = @token
+          req.body = json_payload
         end
         conn.body
       end

@@ -1,0 +1,5 @@
+{
+    "name": "job.approved",
+    "url": "http://some.domain.org/path/to/resource",
+    "security_key": "abcdef"
+}

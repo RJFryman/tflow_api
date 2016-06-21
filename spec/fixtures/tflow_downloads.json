@@ -1,0 +1,7 @@
+{
+    "tflow": {"id": "DDF3E613-F7BF-4B12-8A10-4B0372D7062C", "name": "TURBINE_A_444"},
+    "queues": [
+        {"id": "777E41D7-6868-4C8C-9DA7-9B6C31DD428B", "name": "Full Color"},
+        {"id": "D20E6ACB-745D-45AA-8DE3-21B733F153F0", "name": "CMYK"}
+    ]
+}

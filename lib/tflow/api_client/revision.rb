@@ -3,7 +3,15 @@ module Tflow
     module Revision
       # http://demo.tucannatflow.com/apidoc/#api-Revision
 
-      ### GET /api/v1/revision/:id/lowresFile
+      def delete_revision(id)
+        conn = @client.delete do |req|
+          req.url "/api/v2/revision/#{id}"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      ### GET /api/v2/revision/:id/lowresFile
 
       # Requires:
       # -- Header --
@@ -16,13 +24,13 @@ module Tflow
 
       def download_lowres_pdf(id)
         conn = @client.get do |req|
-          req.url "/api/v1/revision/#{id}/lowresFile"
+          req.url "/api/v2/revision/#{id}/lowresFile"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/revision/:id/originalFile
+      ### GET /api/v2/revision/:id/originalFile
 
       # Requires:
       # -- Header --
@@ -35,13 +43,13 @@ module Tflow
 
       def download_original_file(id)
         conn = @client.get do |req|
-          req.url "/api/v1/revision/#{id}/originalFile"
+          req.url "/api/v2/revision/#{id}/originalFile"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/revision/:id/preflightedPdf
+      ### GET /api/v2/revision/:id/preflightedPdf
 
       # Requires:
       # -- Header --
@@ -54,13 +62,13 @@ module Tflow
 
       def download_preflighted_pdf(id)
         conn = @client.get do |req|
-          req.url "/api/v1/revision/#{id}/preflightedPdf"
+          req.url "/api/v2/revision/#{id}/preflightedPdf"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/revision/:id/proof
+      ### GET /api/v2/revision/:id/proof
 
       # Requires:
       # -- Header --
@@ -73,7 +81,7 @@ module Tflow
 
       def download_proof_pdf(id)
         conn = @client.get do |req|
-          req.url "/api/v1/revision/#{id}/proof"
+          req.url "/api/v2/revision/#{id}/proof"
           req.headers["Authorization"] = @token
         end
         conn.body

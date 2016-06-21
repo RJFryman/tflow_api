@@ -3,29 +3,47 @@ module Tflow
     module Client
       # http://demo.tucannatflow.com/apidoc/#api-Client
 
-      ### POST /api/v1/client/create
+      ### POST /api/v2/client/create
 
       # Requires:
       # -- Header --
       # access_token:  String
       # -- Parameters --
       # name: String
-      # tflows: Object[]
+      # tflow_ids: String[] (optional)
+      # visible_to_instance_user_ids: Number[] (optional)
+      # visible_to_non_instance_user_ids: Number[] (optional)
 
       # Returns:
       # id:    Number
       # name:  String
 
-      def create_client(name, tflows)
+      def create_client(json_payload)
         conn = @client.post do |req|
-          req.url '/api/v1/client/create'
+          req.url '/api/v2/client/create'
           req.headers["Authorization"] = @token
-          req.body = { "name": name, "tflows": tflows }
+          req.body = json_payload
         end
         conn.body
       end
 
-      ### GET /api/v1/client/:id
+      ### GET /api/v2/client/getInitialInfo
+      # Requires:
+      # -- Header --
+      # access_token:  String
+
+      # Returns:
+      # Information for creating new clients
+
+      def get_client_initial_info
+        conn = @client.get do |req|
+          req.url '/api/v2/client/getInitialInfo'
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
+      ### GET /api/v2/client/:id
 
       # Requires:
       # -- Header --
@@ -39,13 +57,13 @@ module Tflow
 
       def get_client(id)
         conn = @client.get do |req|
-          req.url "/api/v1/client/#{id}"
+          req.url "/api/v2/client/#{id}"
           req.headers["Authorization"] = @token
         end
         conn.body
       end
 
-      ### GET /api/v1/client/list
+      ### GET /api/v2/client/list
 
       # Requires:
       # -- Header --
@@ -58,14 +76,14 @@ module Tflow
 
       def list_clients(json_payload={})
         conn = @client.get do |req|
-          req.url "/api/v1/client/list?"
+          req.url "/api/v2/client/list?"
           req.headers["Authorization"] = @token
           req.params = json_payload
         end
         conn.body
       end
 
-      ### GET /api/v1/client/:id/tflows
+      ### GET /api/v2/client/:id/tflows
 
       # Requires:
       # -- Header --
@@ -78,7 +96,7 @@ module Tflow
 
       def get_client_tflows(id)
         conn = @client.get do |req|
-          req.url "/api/v1/client/#{id}/tflows"
+          req.url "/api/v2/client/#{id}/tflows"
           req.headers["Authorization"] = @token
         end
         conn.body

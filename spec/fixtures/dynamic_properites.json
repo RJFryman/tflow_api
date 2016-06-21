@@ -1,0 +1,53 @@
+[
+   {
+      "id": 2,
+      "input_type": "text",
+      "name": "print_width",
+      "display_name": "Print Width",
+      "display_order": 0,
+      "js_validation_rules_proc": "mandatorySize",
+      "default_value": null,
+      "list_values": []
+   },
+   {
+      "id": 1,
+      "input_type": "select",
+      "name": "sales_rep",
+      "display_name": "Sales Rep",
+      "display_order": 30,
+      "js_validation_rules_proc": "positiveNumber",
+      "default_value": null,
+      "list_values": [
+          { "id": 130, "name": "Lottie Hamill" },
+          { "id": 132, "name": "Glen Abbott" },
+          { "id": 134, "name": "Marlin Lesch" },
+          { "id": 175, "name": "Cassie Crooks" },
+          { "id": 176, "name": "Ardella Hansen" },
+          { "id": 156, "name": "Dangelo Ullrich" }
+      ]
+   },
+   {
+      "id": 5,
+      "input_type": "textarea",
+      "name": "shipping_address",
+      "display_name": "Shipping Address",
+      "display_order": 50,
+      "js_validation_rules_proc": null,
+      "default_value": null,
+      "list_values": []
+   },
+   {
+      "id": 11,
+      "input_type": "multiselect",
+      "name": "product_types",
+      "display_name": "Product Types",
+      "display_order": 80,
+      "js_validation_rules_proc": null,
+      "default_value": null,
+      "list_values": [
+             { "id": 1, "name": "Product #1" },
+             { "id": 2, "name": "Product #2" },
+             { "id": 3, "name": "Product #3" }
+      ]
+   }
+]

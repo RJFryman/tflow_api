@@ -8,7 +8,7 @@ describe Tflow::ApiClient::User do
    end
 
    it 'should create a user' do
-     stub_request(:post, 'http://10.0.0.1/api/v1/user/create').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("user.json"))
+     stub_request(:post, 'http://10.0.0.1/api/v2/user/create').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("user.json"))
      json_payload = {
          "email": "Isaisas87@gmail.com",
          "client_id": 100,
@@ -24,14 +24,30 @@ describe Tflow::ApiClient::User do
    end
 
    it 'should get a specific user based on id' do
-     stub_request(:get, 'http://10.0.0.1/api/v1/user/100').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("user.json"))
+     stub_request(:get, 'http://10.0.0.1/api/v2/user/100').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("user.json"))
      response = @client.get_user('100')
      response.should ==  {"email"=>"Isaisas87@gmail.com", "client_id"=>100, "name"=>"Jasmin Mraz", "enabled"=>true, "phonenumber"=>"(450)751-3198x00937", "locale"=>"ru", "workgroups"=>[{"id"=>1}, {"id"=>10}], "alertTypes"=>["comment.create", "job.create"]}
    end
 
    it 'should list all users' do
-     stub_request(:get, 'http://10.0.0.1/api/v1/user/list').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("users.json"))
+     stub_request(:get, 'http://10.0.0.1/api/v2/user/list').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("users.json"))
      response = @client.list_users()
      response.should == [{"id"=>100, "email"=>"nobody@nowhere.net", "client_id"=>1, "name"=>"Nobody Nowhere", "email_frequency"=>"realtime", "enabled"=>true, "phonenumber"=>nil, "locale"=>"en"}, {"id"=>102, "email"=>"Isaias87@gmail.com", "client_id"=>100, "name"=>"Jasmin Mraz", "email_frequency"=>"realtime", "enabled"=>true, "phonenumber"=>"(450)751-3198x00937", "locale"=>"ru"}]
+   end
+
+   it 'should upadet a specific user' do
+     stub_request(:post, 'http://10.0.0.1/api/v2/user/1').to_return(:headers => {"Content-Type"=> "application/json"}, :body => fixture("user.json"))
+     json_payload = {
+         "email": "Isaisas87@gmail.com",
+         "client_id": 100,
+         "name": "Jasmin Mraz",
+         "enabled": true,
+         "phonenumber": "(450)751-3198x00937",
+         "locale": "ru",
+         "workgroups": [{"id":1},{"id":10}],
+         "alertTypes": ["comment.create","job.create"]
+     }
+     response = @client.update_user(1, json_payload)
+     response.should == {"email"=>"Isaisas87@gmail.com", "client_id"=>100, "name"=>"Jasmin Mraz", "enabled"=>true, "phonenumber"=>"(450)751-3198x00937", "locale"=>"ru", "workgroups"=>[{"id"=>1}, {"id"=>10}], "alertTypes"=>["comment.create", "job.create"]}
    end
 end
