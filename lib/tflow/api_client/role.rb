@@ -38,10 +38,11 @@ module Tflow
       # Returns:
       # Array of role names defined in the system
 
-      def list_roles
+      def list_roles(json_payload={})
         conn = @client.get do |req|
           req.url '/api/v2/role/list'
           req.headers["Authorization"] = @token
+          req.params = json_payload
         end
         conn.body
       end
