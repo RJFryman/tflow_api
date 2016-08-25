@@ -11,6 +11,14 @@ module Tflow
         conn.body
       end
 
+      def download_preview_image(id, pageNo)
+        conn = @client.get do |req|
+          req.url "/api/v2/revision/#{id}/preview/#{pageNo}"
+          req.headers["Authorization"] = @token
+        end
+        conn.body
+      end
+
       ### GET /api/v2/revision/:id/lowresFile
 
       # Requires:
