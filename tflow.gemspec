@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "tflow"
   spec.version       = Tflow::VERSION
   spec.authors       = ["Robert Fryman"]
-  spec.email         = ["robert.fryman@metova.com"]
+  spec.email         = ["robert.fryman@xarisma.com"]
 
   spec.summary       = "Ruby Api Wrapper for Tucanna Tflow-approval"
   spec.description   = spec.summary

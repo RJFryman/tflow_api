@@ -3,6 +3,7 @@ require_relative 'api_client/client'
 require_relative 'api_client/dynamic_property'
 require_relative 'api_client/job'
 require_relative 'api_client/permission'
+require_relative 'api_client/product'
 require_relative 'api_client/order'
 require_relative 'api_client/revision'
 require_relative 'api_client/role'
@@ -32,6 +33,7 @@ module Tflow
     include Job
     include Order
     include Permission
+    include Product
     include Revision
     include Role
     include TflowDownload
