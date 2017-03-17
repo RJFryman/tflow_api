@@ -57,10 +57,11 @@ module Tflow
       # id: String
       # transition_name: String
 
-      def executeTransition(id, transition_name)
+      def executeTransition(id, transition_name, json_payload={})
         conn = @client.post do |req|
           req.url "/api/v2/job/#{id}/executeTransition"
           req.headers["Authorization"] = @token
+          req.params = json_payload
           req.body = { "transition_name": transition_name}
         end
         conn.body
