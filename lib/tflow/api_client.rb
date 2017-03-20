@@ -21,6 +21,7 @@ module Tflow
     def initialize(url, access_token=nil)
       @access_token = access_token
       @client ||= Faraday.new(:url => url) do |http|
+        http.request :multipart
         http.request :url_encoded
         http.adapter :net_http
         http.response :json, :content_type => /\bjson$/
